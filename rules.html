@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabaddi Rules</title>
+    <style>
+         body{
+        padding:0px;
+        margin:0px;
+        overflow-x:hidden ;
+    }
+     /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+    /* ===== Img ===== */
+ .img-container {
+    margin-left: 300px;
+    margin-top: 60px;
+    perspective: 1000px;
+}
+
+.img {
+    height: 465px;
+    width: 910px;
+    border: 10px solid black;
+    transition: transform 0.2s ease;
+    transform-style: preserve-3d;
+}
+
+    p{
+        margin-left: 400px;
+      
+       
+    }
+
+      /* ===== Test ===== */
+    :root{
+      --bg: #ffffff;
+      --ink: #0b2340;      
+      --muted: #6b7a89;
+      --accent: #1f77b4;
+      --card: #f7f9fb;
+      --radius: 16px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                   Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+     .card{
+      width:100%;
+      max-width:1400px;
+      background:linear-gradient(180deg, #ffffff, #fcfeff);
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(10,20,30,0.08);
+      padding:32px;
+      border:1px solid rgba(10,20,30,0.03);
+      margin-left: 25px;
+    }
+
+     /* Title area */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .title{
+      font-size:44px;
+      line-height:1;
+      font-weight:800;
+      letter-spacing:0.6px;
+      color:var(--ink);
+      margin:0;
+      color: #ff4500
+    }
+
+     .divider{
+      height:1px;
+      background:linear-gradient(90deg, rgba(10,20,30,0.06), rgba(10,20,30,0.03));
+      margin:12px 0 20px 0;
+      border-radius:2px;
+    }
+
+    /* Top Controls */
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .btn1{
+      background:transparent;
+      border:1px solid rgba(11,35,64,0.08);
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      font-size:14px;
+      color:var(--ink);
+      transition:all .16s ease;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .btn1:hover{ transform:translateY(-2px); box-shadow: 0 6px 18px rgba(11,35,64,0.06); }
+    .btn1.primary{
+      background:linear-gradient(180deg,var(--accent), #185f97);
+      color:white;
+      border:none;
+    }
+
+     /* Layout: two-column for large screens */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:28px;
+    }
+
+     /* Left column: vertical index with big numbers */
+    .index{
+      padding:18px;
+      border-radius:12px;
+      background:var(--card);
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .index-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:10px;
+      border-radius:10px;
+    }
+    .index-num{
+      font-size:20px;
+      font-weight:800;
+      min-width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(180deg,#eaf4ff, #d6ecff);
+      color:var(--accent);
+      border-radius:10px;
+    }
+    .index-label{
+      font-weight:700;
+      color:var(--ink);
+    }
+    .index-sub{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.2;
+    }
+
+      /* Right column: detailed sections */
+    .sections{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .section{
+      background:transparent;
+      border-radius:12px;
+      padding:14px;
+      border:1px solid rgba(11,35,64,0.04);
+    }
+    .section-header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .section-number{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:var(--accent);
+      background:linear-gradient(180deg, rgba(31,119,180,0.12), rgba(31,119,180,0.06));
+      font-size:18px;
+    }
+    .section-title{
+      font-size:20px;
+      font-weight:800;
+      color:var(--ink);
+      margin-right:auto;
+    }
+    .toggle{
+      font-weight:700;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .section-body{
+      margin-top:10px;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:15px;
+      display:block;
+    }
+    .section-body ul{padding-left:18px; margin:8px 0}
+    .section-body li{margin:6px 0}
+
+      /* small screen adjustments */
+    @media (max-width:780px){
+      .grid{ grid-template-columns: 1fr; }
+      .title{ font-size:34px; }
+      body{ padding:18px; }
+      .card{ padding:18px; }
+    }
+
+ 
+    @media print{
+      body{ background:white; padding:0 }
+      .card{ box-shadow:none; border:none; margin:0; padding:12px; max-width:100%; }
+      .controls{ display:none; }
+    }
+
+ /* videos*/
+    .video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.video-box iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+}
+
+
+
+          
+/* contact */
+.kx-footer {
+  background: #111;
+  color: #bde0fe;;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.kx-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+}
+
+.kx-logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.kx-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color:#fca311;
+}
+
+.kx-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kx-column ul li {
+  margin: 8px 0;
+}
+
+.kx-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.kx-column ul li a:hover {
+  opacity: 1;
+  color:#fca311;
+}
+
+.kx-social i {
+  margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+   <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow" >▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Updates</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+<div class="img-container" >
+    <img src="kabaddirule.png" class="img">
+    <p>Kabaddi Court Rules</p>
+</div>
+
+
+
+     <main class="card" id="infographic">
+    <div class="header">
+      <h1 class="title">KABADDI RULES</h1>
+
+      <div class="controls" aria-hidden="false">
+        <button class="btn1" id="collapseAll" title="Collapse all sections">Collapse All</button>
+        <button class="btn1" id="expandAll" title="Expand all sections">Expand All</button>
+        <button class="btn1" id="downloadPng" title="Download infographic as PNG">Download PNG</button>
+        <button class="btn1 primary" id="printBtn" title="Print / Save as PDF">Print</button>
+      </div>
+    </div>
+
+    <div class="divider" role="separator" aria-hidden="true"></div>
+
+    <section class="grid" aria-label="Kabaddi infographic content">
+      <!-- left: index -->
+      <aside class="index" aria-labelledby="indexHeading">
+        <h2 id="indexHeading" style="margin:0 0 8px 0; font-size:16px; color:var(--muted);">Five Formats / Structures</h2>
+
+        <div class="index-item">
+          <div class="index-num">1</div>
+          <div>
+            <div class="index-label">What is Kabaddi?</div>
+            <div class="index-sub">Short definition to orient readers.</div>
+          </div>
+        </div>
+
+        <div class="index-item">
+          <div class="index-num">2</div>
+          <div>
+            <div class="index-label">How to Play</div>
+            <div class="index-sub">Step-by-step beginner friendly guide.</div>
+          </div>
+        </div>
+
+        <div class="index-item">
+          <div class="index-num">3</div>
+          <div>
+            <div class="index-label">Basic Rules</div>
+            <div class="index-sub">Core rules every player must know.</div>
+          </div>
+        </div>
+
+        <div class="index-item">
+          <div class="index-num">4</div>
+          <div>
+            <div class="index-label">Scoring</div>
+            <div class="index-sub">How points are earned and types of points.</div>
+          </div>
+        </div>
+
+        <div class="index-item">
+          <div class="index-num">5</div>
+          <div>
+            <div class="index-label">Common Terms</div>
+            <div class="index-sub">Glossary of key terms (raider, bonus, super tackle).</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- right: sections -->
+      <div class="sections" id="sectionsRoot">
+        <article class="section" data-index="1">
+          <div class="section-header" tabindex="0">
+            <div class="section-number">1</div>
+            <div class="section-title">What is Kabaddi?</div>
+            <div class="toggle">Expand</div>
+          </div>
+          <div class="section-body" hidden>
+            <p><strong>Kabaddi</strong> is a contact team sport where players send a "raider" into the opposing half to tag defenders and return without being tackled.</p>
+            <p>It blends sprint, evasion, strength and breath-control; it's played at school, amateur, and professional levels worldwide.</p>
+          </div>
+        </article>
+
+        <article class="section" data-index="2">
+          <div class="section-header" tabindex="0">
+            <div class="section-number">2</div>
+            <div class="section-title">How to Play</div>
+            <div class="toggle">Expand</div>
+          </div>
+          <div class="section-body" hidden>
+            <ol>
+              <li>A raider crosses into the opponent's half and tries to tag defenders.</li>
+              <li>The raider must chant "kabaddi" (or demonstrate continuous exhalation) to show breath control while in opponent half.</li>
+              <li>If the raider returns across the midline safely, each tagged defender is out and the raider's team scores points.</li>
+              <li>If the raider is tackled and cannot return, the defending team scores points.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="section" data-index="3">
+          <div class="section-header" tabindex="0">
+            <div class="section-number">3</div>
+            <div class="section-title">Basic Rules</div>
+            <div class="toggle">Expand</div>
+          </div>
+          <div class="section-body" hidden>
+            <ul>
+              <li>Each team typically has 7 players on court (substitutes allowed by competition rules).</li>
+              <li>Players must not deliberately injure opponents; fouls and misconduct are penalized.</li>
+              <li>The raider must stay within court lines while raiding; stepping out is a foul.</li>
+              <li>Holding, grabbing, or tackling must follow fair-play rules — no hair-pulling, striking, or dangerous moves.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="section" data-index="4">
+          <div class="section-header" tabindex="0">
+            <div class="section-number">4</div>
+            <div class="section-title">Scoring</div>
+            <div class="toggle">Expand</div>
+          </div>
+          <div class="section-body" hidden>
+            <p>Typical scoring elements:</p>
+            <ul>
+              <li><strong>1 point</strong> for each opponent tagged and returned.</li>
+              <li><strong>Bonus point</strong> for crossing the bonus line under legal circumstances (depends on formation).</li>
+              <li><strong>Super tackle</strong> extra point(s) awarded to defenders when tackling a raider with 3 or fewer defenders on court (competition-dependent).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="section" data-index="5">
+          <div class="section-header" tabindex="0">
+            <div class="section-number">5</div>
+            <div class="section-title">Common Terms</div>
+            <div class="toggle">Expand</div>
+          </div>
+          <div class="section-body" hidden>
+            <dl>
+              <dt><strong>Raider</strong></dt>
+              <dd>Player who crosses into the opponent half to tag defenders.</dd>
+
+              <dt><strong>Defender</strong></dt>
+              <dd>Player(s) who try to stop the raider from returning.</dd>
+
+              <dt><strong>Bonus Line</strong></dt>
+              <dd>Line which, if legally crossed by the raider alone, can award an extra point.</dd>
+
+              <dt><strong>Super Tackle</strong></dt>
+              <dd>A situation where fewer defenders tackle the raider and an extra point is awarded.</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Videos  -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Kabaddi Rules – Video Guide</h2>
+    <span class="toggle">Expand</span>
+  </div>
+
+  <div class="section-body" hidden>
+    <div class="video-grid">
+
+      <div class="video-box">
+        <iframe src= "https://www.youtube.com/embed/d-9eTjuXymY?si=3gwrzv6R7NbIBA8S"  
+                title="Kabaddi Rules Video 1"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/ybdGREjvluU?si=aAAjy_xjS4ix6sc8" 
+                title="Kabaddi Rules Video 2"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/MVAltI0P7Rs?si=HNGEQtCq8zOliPvi" 
+                title="Kabaddi Rules Video 3"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/xG9fd-DRumQ?si=XpVx2EFD0b2NedEY" 
+                title="Kabaddi Rules Video 4"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Kabaddi Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+(function (){
+
+  const sections = Array.from(document.querySelectorAll('.section'));
+  const expandAllBtn = document.getElementById('expandAll');
+  const collapseAllBtn = document.getElementById('collapseAll');
+  const printBtn = document.getElementById('printBtn');
+  const downloadBtn = document.getElementById('downloadPng');
+
+  function setExpanded(section, expanded){
+      const body = section.querySelector('.section-body');
+      const toggle = section.querySelector('.toggle');
+      if (expanded){
+        body.hidden = false;
+        toggle.textContent = 'Collapse';
+      } else {
+        body.hidden = true;
+        toggle.textContent = 'Expand';
+      }
+  }
+
+  sections.forEach(s => {
+    const header = s.querySelector('.section-header');
+    header.addEventListener('click', () => {
+      const body = s.querySelector('.section-body');
+      setExpanded(s, body.hidden);
+    });
+  });
+
+  expandAllBtn.addEventListener('click', () => sections.forEach(s => setExpanded(s, true)));
+  collapseAllBtn.addEventListener('click', () => sections.forEach(s => setExpanded(s, false)));
+  printBtn.addEventListener('click', () => window.print());
+
+  downloadBtn.addEventListener('click', async () => {
+    const root = document.getElementById('infographic');
+    sections.forEach(s => setExpanded(s, true));
+    await new Promise(r => setTimeout(r, 80));
+
+    if (window.html2canvas) {
+      const canvas = await html2canvas(root, { scale: 2 });
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = 'kabaddi-rules-infographic.png';
+      a.click();
+    } else {
+      alert('PNG download not available');
+    }
+  });
+
+  sections.forEach(s => setExpanded(s, false));
+  const kabImg = document.querySelector('.img');
+
+  kabImg.addEventListener('mousemove', (e) => {
+    const rect = kabImg.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * 10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    kabImg.style.transform =
+      `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+
+  kabImg.addEventListener('mouseleave', () => {
+    kabImg.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  });
+
+})();
+</script>
+
+ 
+</body>
+</html>

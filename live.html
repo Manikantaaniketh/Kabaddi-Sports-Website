@@ -1,0 +1,187 @@
+<!-- Zego Cloud -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>live</title>
+    <link rel="stylesheet" href="live.css">
+</head>
+<body>
+  <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+       <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+<!-- live-->
+     <div id="root"></div>
+     
+
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Player Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  
+    
+</body>
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+<script>
+window.onload = function () {
+    function getUrlParams(url) {
+        let urlStr = url.split('?')[1];
+        const urlSearchParams = new URLSearchParams(urlStr);
+        const result = Object.fromEntries(urlSearchParams.entries());
+        return result;
+    }
+
+
+        // Generate a Token by calling a method.
+        // @param 1: appID
+        // @param 2: serverSecret
+        // @param 3: Room ID
+        // @param 4: User ID
+        // @param 5: Username
+    const roomID = getUrlParams(window.location.href)['roomID'] || (Math.floor(Math.random() * 10000) + "");
+    const userID = Math.floor(Math.random() * 10000) + "";
+    const userName = "userName" + userID;
+    const appID = 579644465;
+    const serverSecret = "9e4e921ac311d67f8a62fada1d9a5b1b";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+    
+        // You can assign different roles based on url parameters.
+        let role = getUrlParams(window.location.href)['role'] || 'Host';
+        role = role === 'Host' ? ZegoUIKitPrebuilt.Host : ZegoUIKitPrebuilt.Audience;
+        let config = {}
+        if(role === 'Host'){
+            config = {
+           	turnOnCameraWhenJoining: true,
+           	showMyCameraToggleButton: true,
+           	showAudioVideoSettingsButton: true,
+           	showScreenSharingButton: true,
+           	showTextChat: true,
+           	showUserList: true,
+         }
+        }
+        const zp = ZegoUIKitPrebuilt.create(kitToken);
+        zp.joinRoom({
+            container: document.querySelector("#root"),
+            scenario: {
+                mode: ZegoUIKitPrebuilt.LiveStreaming,
+                config: {
+                            role,
+                },
+            },
+            sharedLinks: [{
+                name: 'Join as an audience',
+                url:
+                window.location.protocol + '//' +
+                window.location.host +
+                window.location.pathname +
+                '?roomID=' +
+                roomID +
+                '&role=Audience',
+            }],
+            ...config
+            });
+}
+</script>
+</body>
+</html>

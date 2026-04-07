@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KabaddiXpress Help Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    :root {
+    --bg-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-color: #f5f5f5;
+    --primary-color: #d84315; 
+    --accent-color: #f2f2f2;
+    --border-color: #3d3d3d;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+
+.container {
+    padding: 20px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+  /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+/* Main Header*/
+.main-header {
+    text-align: center;
+    padding: 60px 20px 80px;
+    background-color: #121212; 
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1.1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.search-container input::placeholder {
+    color: #888;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* --- Topic Cards Grid --- */
+.topic-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: #383838;
+}
+
+.card i {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card span {
+    display: block;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/*  Chat Prompt Box  */
+.chat-prompt-box {
+    position: fixed; 
+    top: 150px; 
+    right: 50px;
+    width: 350px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.prompt-header {
+    background-color: #3a3a3a;
+    padding: 15px;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.prompt-content {
+    padding: 15px;
+}
+
+.prompt-content ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.prompt-content li {
+    margin-bottom: 5px;
+}
+
+.example-text {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-top: 15px;
+    border-left: 3px solid var(--primary-color);
+    padding-left: 8px;
+}
+
+.prompt-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.prompt-input textarea {
+    flex-grow: 1;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #383838;
+    color: var(--text-color);
+    resize: none;
+    font-size: 1em;
+}
+
+.prompt-input textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#sendButton {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 0 15px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#sendButton:hover {
+    background-color: #b7320f;
+}
+
+/*  Media Queries */
+@media (max-width: 1024px) {
+    .navbar, .container {
+        padding: 15px 20px;
+    }
+    .chat-prompt-box {
+        position: static;
+        width: auto;
+        margin: 20px;
+    }
+
+    .main-header {
+        padding: 40px 20px 60px;
+    }
+    
+    .main-header h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar, .container {
+        padding: 15px 20px;
+    }
+    .chat-prompt-box {
+        position: static; 
+        width: auto;
+        margin: 20px auto; 
+        max-width: 600px; 
+    }
+
+    .main-header {
+        padding: 40px 20px 60px;
+    }
+    
+    .main-header h1 {
+        font-size: 2em;
+    }
+    .topic-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+.help-content-area {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.help-content-area h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+#contentBody p {
+    margin-bottom: 15px;
+}
+
+#contentBody ul {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+#backToTopics {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#backToTopics:hover {
+    background-color: #3a3a3a;
+}
+
+    </style>
+</head>
+<body>
+   <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+       <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+    <div class="main-header">
+        <h1>KabaddiXpress Help Center</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Q Search for answers...">
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="topic-cards-grid">
+            
+            <div class="card">
+                <i class="fas fa-credit-card"></i>
+                <span>Account & Billing</span>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-video"></i>
+                <span>Streaming Issues</span>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-tools"></i>
+                <span>Technical & Support</span>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <span>Account & Profile</span>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-scroll"></i>
+                <span>Terms & Legal</span>
+            </div>
+            
+            <div class="card">
+                <i class="fas fa-trophy"></i>
+                <span>Contest & Score Issues</span>
+            </div>
+        </section>
+        
+        <div class="chat-prompt-box">
+            <div class="prompt-header">
+                Hello! / KabaddiXpress
+            </div>
+            <div class="prompt-content">
+                <p>To get the fastest resolution, please start by telling us:</p>
+                
+                <ol>
+                    <li><strong>Your Account Type:</strong></li>
+                    <li><strong>What is the issue related?</strong></li>
+                </ol>
+                
+                <p class="example-text">
+                    *Example: 'Premium Subscriber. My issue is Billing/Subscription. I was double-charged $99 on Dec 10th. My Transaction ID is 12345ABC.'
+                </p>
+            </div>
+            <div class="prompt-input">
+                <textarea id="userInput" placeholder="Type your issue here..."></textarea>
+                <button id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <div class="container">
+        <section class="topic-cards-grid">
+            </section>
+        
+        <section class="help-content-area" id="helpContentArea" style="display:none;">
+            <h2 id="contentTitle"></h2>
+            <div id="contentBody"></div>
+            <button id="backToTopics">← Back to All Topics</button>
+        </section>
+        
+        <div class="chat-prompt-box">
+        </div>
+
+    </div>
+
+    <script >
+    document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    const sendButton = document.getElementById('sendButton');
+    const userInput = document.getElementById('userInput');
+    const searchInput = document.querySelector('.search-container input');   
+    const LOCAL_STORAGE_KEY = 'kabaddiXpressSupportDraft';
+    // Local Storage Handling 
+    const saveDraft = () => {
+        try {
+            localStorage.setItem(LOCAL_STORAGE_KEY, userInput.value);
+        } catch (e) {
+            console.error("Local Storage Error: Could not save draft.", e);
+        }
+    };
+    const loadDraft = () => {
+        try {
+            const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (savedDraft) {
+                userInput.value = savedDraft;
+                console.log("Loaded saved draft from Local Storage.");
+            }
+        } catch (e) {
+            console.error("Local Storage Error: Could not load draft.", e);
+        }
+    };
+    loadDraft();
+    userInput.addEventListener('input', saveDraft);
+
+    
+    const filterCards = () => {
+        const searchText = searchInput.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+            const cardText = card.querySelector('span').textContent.toLowerCase();
+            
+            if (cardText.includes(searchText)) {
+                card.style.display = 'flex'; 
+            } else {
+                card.style.display = 'none'; 
+            }
+        });
+    };
+
+    searchInput.addEventListener('input', filterCards);
+
+    // Card Click Interaction 
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const topic = card.querySelector('span').textContent;
+            alert(`Navigating to section for: ${topic}`);
+        });
+    });
+
+    //  Send Button Interaction
+    sendButton.addEventListener('click', () => {
+        const message = userInput.value.trim();
+        if (message.length > 0) {
+            console.log("Support Request Sent:", message);
+            
+            sendButton.innerHTML = '<i class="fas fa-check"></i>';
+            sendButton.style.backgroundColor = 'green';
+            userInput.value = '';
+            
+            try {
+                localStorage.removeItem(LOCAL_STORAGE_KEY);
+                console.log("Draft cleared from Local Storage after submission.");
+            } catch (e) {
+                console.error("Local Storage Error: Could not clear draft.", e);
+            }
+            
+            setTimeout(() => {
+                sendButton.innerHTML = '<i class="fas fa-paper-plane"></i>';
+                sendButton.style.backgroundColor = 'var(--primary-color)'; 
+            }, 2000);
+            
+        } else {
+            alert('Please type your issue before sending.');
+        }
+    });
+});
+    </script>
+</body>
+</html>

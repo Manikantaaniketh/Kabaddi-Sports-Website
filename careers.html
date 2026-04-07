@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers</title>
+   
+    <style>
+:root {
+    --primary-red: #E30613; 
+    --secondary-blue: #0077B6; 
+    --dark-bg: #1A1A1A;
+    --light-text: #F5F5F5;
+    --card-bg: #2C2C2C;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+
+   /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+.career {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/*  Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-bg) 100%);
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--light-text);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/*  Content Sections  */
+.intro p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    text-align: center;
+    color: var(--primary-red);
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--secondary-blue);
+    display: inline-block;
+    padding-bottom: 5px;
+    color:#ffb703;
+}
+
+.role-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.role-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 5px solid var(--primary-red);
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.role-card h3 {
+    color: var(--secondary-blue);
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+/*  Call to Action  */
+.call-to-action {
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 40px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+}
+
+blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    color: var(--primary-red);
+    margin: 20px auto; 
+    padding: 10px 0;
+    border-left: 5px solid var(--secondary-blue);
+    padding-left: 20px;
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+#apply-button {
+    background-color: var(--primary-red);
+    color: var(--light-text);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+#apply-button:hover {
+    background-color: #ffb703;
+    transform: scale(1.02);
+}
+
+.apply-link{
+    text-decoration: none;
+}
+
+/*  Keyframes for the title  */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.95; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 992px) {
+    .hero {
+        padding: 40px 15px;
+    }
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    .role-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* Mobile Devices (Max width 600px) */
+@media (max-width: 600px) {
+    .career-container {
+        padding: 10px;
+    }
+    .hero {
+        padding: 30px 10px;
+        margin-bottom: 20px;
+    }
+    .hero h1 {
+        font-size: 1.8em;
+    }
+    .subtitle {
+        font-size: 1em;
+    }
+    .intro-section p {
+        font-size: 1em;
+    }
+    .role-grid {
+
+        grid-template-columns: 1fr;
+    }
+    .role-card {
+        padding: 20px;
+    }
+    blockquote {
+        font-size: 1.2em;
+        padding-left: 15px;
+    }
+    #apply-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+      
+/* contact */
+
+.kx-footer {
+  background: #111;
+  color: #bde0fe;;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.kx-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+}
+
+.kx-logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.kx-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color:#fca311;
+}
+
+.kx-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kx-column ul li {
+  margin: 8px 0;
+}
+
+.kx-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.kx-column ul li a:hover {
+  opacity: 1;
+  color:#fca311;
+}
+
+.kx-social i {
+  margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+       <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+    <div class="career">
+        <header class="hero">
+            <h1 id="animated-title"> The Raid is On! Your Career Mat Awaits </h1>
+            <p class="subtitle">Join the definitive global destination for Kabaddi news and analysis.</p>
+        </header>
+
+        <section class="intro">
+            <p>
+                KabaddiXpress is the **Pillars of the Mat**—championing the sport's explosive growth and defining the narrative for millions of fans worldwide.
+            </p>
+            <p>
+                Are you ready to **execute a winning raid** in your career? We are seeking fierce, passionate strategists to join our elite squad. If you possess the crucial trio of an ideal player—**Speed, Strength, and Strategic Thinking**—we invite you to use those skills to dominate the digital arena.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>We Are Looking For Individuals Who Can:</h2>
+            <div class="role-grid">
+                <div class="role-card">
+                    <h3>⚡ Execute Perfect Raids</h3>
+                    <p>Deliver timely, compelling, and insightful content (Journalism/Content).</p>
+                </div>
+                <div class="role-card">
+                    <h3>🛡️ Hold the Line</h3>
+                    <p>Ensure flawless execution and team coordination (Operations/Management).</p>
+                </div>
+                <div class="role-card">
+                    <h3>📊 Master the Chain Tackle</h3>
+                    <p>Analyze trends and derive winning strategies from data (Data/Analytics).</p>
+                </div>
+                <div class="role-card">
+                    <h3>🌐 Build the Mat</h3>
+                    <p>Create world-class digital experiences for our fans (Tech/Development).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="call-to-action">
+            <h2>Why Join KabaddiXpress?</h2>
+            <blockquote id="quote-text">
+                "Don't just watch the game—help us define it. This is your chance to score the ultimate touchpoint."
+            </blockquote>
+            <p>
+                This is more than a job; it’s a commitment to a winning team and a growing global phenomenon. We offer a high-octane, collaborative environment where your dedication directly fuels the future of Kabaddi.
+            </p>
+          <a href="login.html" class="apply-link" id="apply-button">Initiate Your Career Raid Now!</a>
+        </section>
+        </section>
+
+    </div>
+    
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Kabaddi Rules</a></li>    
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <script> 
+        document.addEventListener('DOMContentLoaded', () => {
+    const title = document.getElementById('animated-title');
+    if (title) {
+        title.style.animation = 'pulse 2s infinite ease-in-out';
+    }
+    const applyButton = document.getElementById('apply-button');
+
+    applyButton.addEventListener('click', () => {
+        alert('Raid Initiated! First Login this page...');
+    });
+
+    const quote = document.getElementById('quote-text');
+    if (quote) {
+        quote.style.opacity = 0;
+        setTimeout(() => {
+            quote.style.transition = 'opacity 1s ease-in';
+            quote.style.opacity = 1;
+        }, 500);
+    }
+});
+    </script>
+</body>
+</html>

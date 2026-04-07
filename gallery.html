@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabaddi Express Gallery</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0px;
+            background-color: #150a26; 
+            color: #ffffff;
+            overflow-x: hidden; 
+        }
+
+        /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 28px;
+            max-width: 1300px;
+            margin: 0 auto 40px; 
+            margin-top: 50px;
+            padding: 0 10px;
+        }
+
+        .match-card:not(.active-card) {
+            display: none;
+        }
+        
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .match-card {
+            background-color: #2b1744; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); 
+            cursor: pointer;
+            opacity: 0; 
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.4s ease;
+        }
+        .match-card.active-card {
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+        }
+        .match-grid > .match-card:nth-child(6n+1).active-card { animation-delay: 0.1s; }
+        .match-grid > .match-card:nth-child(6n+2).active-card { animation-delay: 0.2s; }
+        .match-grid > .match-card:nth-child(6n+3).active-card { animation-delay: 0.3s; }
+        .match-grid > .match-card:nth-child(6n+4).active-card { animation-delay: 0.4s; }
+        .match-grid > .match-card:nth-child(6n+5).active-card { animation-delay: 0.5s; }
+        .match-grid > .match-card:nth-child(6n+6).active-card { animation-delay: 0.6s; }
+        
+        .match-card:hover {
+            transform: translateY(-12px) scale(1.03) rotateZ(0.3deg); 
+            box-shadow: 0 20px 50px rgba(255, 138, 0, 0.3), 
+                        0 5px 15px rgba(0, 0, 0, 0.9);
+        }
+        .image-container { 
+            height: 180px; 
+            position: relative;
+             overflow: hidden;
+             }
+        .match-image {
+             width: 100%;
+              height: 100%; 
+              object-fit: cover; 
+              display: block; 
+              transition: transform 0.6s ease-out;
+             }
+        .match-card:hover .match-image { 
+            transform: scale(1.15);
+         }
+        .image-overlay {
+             position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%; 
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+            opacity: 1;
+            transition: opacity 0.4s ease;
+         }
+        .match-card:hover .image-overlay {
+             opacity: 0;
+             }
+        .match-content { 
+            padding: 18px 20px 20px;
+         }
+        .match-title { 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin-bottom: 5px;
+            line-height: 1.4;
+            position: relative; 
+            display: inline-block; 
+        }
+        .match-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; 
+            left: 0;
+            width: 0;
+            height: 2px; 
+            background-color: #ff8a00;
+            transition: width 0.3s ease-out;
+         }
+
+        .match-card:hover .match-title::after { 
+            width: 100%;
+         }
+        .match-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px; 
+            color: #c9c5d1;
+            font-size: 14px; 
+        }
+        .icon-curve { 
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+         }
+        .match-card:hover .icon-curve {
+            transform: translateX(5px) translateY(-5px) scale(1.3);
+            color: #ff8a00; }
+        .icon-curve::before { 
+            content: "↗"; 
+            font-weight: 900;
+            color: #ff8a00; 
+            font-size: 20px;
+         }
+        .icon-photo {
+             font-weight: 500;
+             }
+        .icon-photo::before { 
+            content: "Photos";
+         }
+
+        .pagination-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; 
+            padding: 20px 0;
+        }
+        .pagination .page-item {
+            margin: 0 4px;
+        }
+        .pagination .page-link {
+            background-color: #2b1744; 
+            border: 1px solid #4a2e70; 
+            color: #c9c5d1; 
+            border-radius: 8px;
+            min-width: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pagination .page-link:hover,
+        .pagination .page-item.active .page-link {
+            background-color: #ff8a00; 
+            border-color: #ff8a00;
+            color: #150a26;
+            box-shadow: 0 2px 10px rgba(255, 138, 0, 0.5);
+            font-weight: bold;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #201332;
+            color: #555;
+            cursor: not-allowed;
+            border-color: #201332;
+        }
+
+        /*  MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .match-grid {
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            .match-grid {
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+            body {
+                padding: 10px;
+            }
+            .pagination .page-link {
+                min-width: 30px;
+                padding: 6px 10px;
+            }
+        }
+                    
+        /* contact */
+
+        .kx-footer {
+        background: #111;
+        color: #fca311;
+        padding: 60px 40px;
+        font-family: Arial, sans-serif;
+        }
+
+        .kx-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 50px;
+        }
+
+        .kx-logo {
+        font-size: 32px;
+        font-weight: 700;
+        }
+
+        .kx-column h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color:#fca311;
+        }
+
+        .kx-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .kx-column ul li {
+        margin: 8px 0;
+        }
+
+        .kx-column ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
+        opacity: 0.8;
+        transition: 0.3s;
+        }
+
+        .kx-column ul li a:hover {
+        opacity: 1;
+        color:#fca311;
+        }
+
+        .kx-social i {
+        margin-right: 10px;
+        }
+                
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+
+      <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+    <div class="match-grid">
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/ed/50/f7/16-9/8VG5nyrhMD.png?v=2.39&w=600" class="match-image" alt="Final: Dabang Delhi K.C vs Puneri Paltan">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Final: Dabang Delhi K.C vs Puneri Paltan</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/02/37/2d/16-9/hjnnkhqKYk.png?v=2.39&w=1200" class="match-image" alt="Qualifier 2: Puneri Paltan vs Telugu Titans">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Qualifier 2: Puneri Paltan vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/50/6f/88/16-9/LmjrDEb3u3.png?v=2.39&w=600" class="match-image" alt="Eliminator 3: Telugu Titans vs Patna Pirates">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Eliminator 3: Telugu Titans vs Patna Pirates</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/0e/2f/ce/16-9/O9rYydGO84.png?v=2.39&w=400" class="match-image" alt="Qualifier 1: Puneri Paltan vs Dabang Delhi K.C.">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Qualifier 1: Puneri Paltan vs Dabang Delhi K.C.</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/da/98/ce/16-9/EDca2STAMV.png?v=2.39&w=600" class="match-image" alt="Eliminator 2: Patna Pirates vs Bengaluru Bulls">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Eliminator 2: Patna Pirates vs Bengaluru Bulls</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/c7/b3/1d/16-9/mu9PZ22SGP.png?v=2.37&w=600" class="match-image" alt="Mini-Qualifier: Bengaluru Bulls vs Telugu Titans">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Mini-Qualifier: Bengaluru Bulls vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/d6/7f/bf/16-9/KKPgQ74sac.jpg?v=2.39&w=600" class="match-image" alt="Eliminator 1: Jaipur Pink Panthers vs Patna Pirates">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Eliminator 1: Jaipur Pink Panthers vs Patna Pirates</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/54/d7/4c/4-3/nb4uRlinmM.png?v=2.39&w=1024" class="match-image" alt="Play-in 2: U Mumba vs Patna Pirates">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Play-in 2: U Mumba vs Patna Pirates</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/1c/0a/e0/16-9/Qb3L2eBsnD.jpg?v=2.39&w=600" class="match-image" alt="Example Match 9">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Match 9: Bengal Warriors vs Jaipur Pink Panthers</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/89/ba/18/16-9/RnQ6DF4dG1.jpg?v=2.39&w=600" class="match-image" alt="Example Match 10">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 10: Tamil Thalaivas vs UP Yoddha</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/9e/03/26/16-9/6GwqAHhkWP.png?v=2.37&w=600" class="match-image" alt="Example Match 11">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 11: Haryana Steelers vs Gujarat Giants</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/02/37/2d/16-9/hjnnkhqKYk.png?v=2.39&w=400" class="match-image" alt="Example Match 12">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 12: Puneri Paltan vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="match-card">
+            <div class="image-container">
+                <img src="https://s3.ap-south-1.amazonaws.com/assets-pkl.sportz.io/waf-images/a7/07/16/16-9/EHeZj8NXS2.jpg" class="match-image" alt="Example Match 13">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Match 13: Bengal warriors vs Gujarat Giants</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/0c/15/ce/16-9/gx784HJilT.png?v=2.34&w=400" class="match-image" alt="Example Match 14">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 14: Puneri Paltan vs  Gujarat Giants</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/fa/e0/2d/16-9/G06YL6y9m7.jpg?v=2.39&w=600" class="match-image" alt="Example Match 15">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Match 15:  Bengal warriors vsTamil Thalaivas </div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/9e/dd/de/16-9/y0RPGjuGtZ.png?v=2.39&w=600" class="match-image" alt="Example Match 16">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 16: Gujarat Giants vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/29/be/b6/16-9/YvaIOjoCqW.jpg?v=2.39&w=600" class="match-image" alt="Example Match 17">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 17: UP Yoddhas vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/88/dc/93/16-9/MEVVLZfA2C.jpg?v=2.39&w=600" class="match-image" alt="Example Match 18">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 18:Haryana stealers vs Bengal warriors</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/54/7b/3f/16-9/7lbQ8AvxBW.png?v=2.39&w=600" class="match-image" alt="Example Match 19">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 19: jaipur pink panthers vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/2a/75/cb/16-9/fHDEjMb9Kl.jpg?v=2.39&w=600" class="match-image" alt="Example Match 20">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 20: Haryana stealers vs Dabang Delhi</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/25/1f/42/16-9/0g2U6XVxTB.png?v=2.39&w=600" class="match-image" alt="Example Match 21">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title">Match 21: Bengal warriors vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/d4/36/f6/16-9/sOhojg4oPJ.jpg?v=2.39&w=600" class="match-image" alt="Example Match 22">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 22: Tamil Thalaivas vs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/8a/77/44/16-9/SeE1ih78ld.png?v=2.39&w=600" class="match-image" alt="Example Match 23">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 23: Puneri Paltan vs u mumba</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="match-card">
+            <div class="image-container">
+                <img src="https://www.prokabaddi.com/static-assets/waf-images/cc/dc/bc/16-9/GqH9F3T4CY.png?v=2.39&w=600" class="match-image" alt="Example Match 24">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="match-content">
+                <div class="match-title"> Match 24: patna piratesvs Telugu Titans</div>
+                <div class="match-footer">
+                    <div class="icon-photo"></div>
+                    <div class="match-footer-icons">
+                        <span class="icon-curve"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="pagination-container">
+        <nav aria-label="Gallery page navigation">
+            <ul class="pagination" id="gallery-pagination">
+                </ul>
+        </nav>
+    </div>
+    
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Player Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.match-card');
+            const paginationContainer = document.getElementById('gallery-pagination');
+            const cardsPerPage = 8;
+            const totalCards = cards.length;
+            const pageCount = Math.ceil(totalCards / cardsPerPage);
+            let currentPage = 1;
+
+            function displayPage(page) {
+                currentPage = page;
+                const start = (page - 1) * cardsPerPage;
+                const end = start + cardsPerPage;
+
+                cards.forEach((card, index) => {
+                    card.classList.remove('active-card');
+                    card.style.opacity = '0'; 
+
+                    if (index >= start && index < end) {
+                        card.classList.add('active-card');
+                    }
+                });
+            }
+
+            //  Function to Create Pagination Links 
+            function setupPagination() {
+                paginationContainer.innerHTML = ''; 
+
+                // Previous Button
+                const prevDisabled = currentPage === 1 ? 'disabled' : '';
+                const prevItem = document.createElement('li');
+                prevItem.className = `page-item ${prevDisabled}`;
+                prevItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
+                paginationContainer.appendChild(prevItem);
+
+                // Page Number Buttons
+                for (let i = 1; i <= pageCount; i++) {
+                    const activeClass = i === currentPage ? 'active' : '';
+                    const pageItem = document.createElement('li');
+                    pageItem.className = `page-item ${activeClass}`;
+                    pageItem.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+                    paginationContainer.appendChild(pageItem);
+                }
+
+                // Next Button
+                const nextDisabled = currentPage === pageCount ? 'disabled' : '';
+                const nextItem = document.createElement('li');
+                nextItem.className = `page-item ${nextDisabled}`;
+                nextItem.innerHTML = `<a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
+                paginationContainer.appendChild(nextItem);
+            }
+
+            //  Event Listener for Pagination Clicks 
+            paginationContainer.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = parseInt(e.target.getAttribute('data-page'));
+
+                if (targetPage && targetPage >= 1 && targetPage <= pageCount) {
+                    displayPage(targetPage);
+                    setupPagination(); 
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                }
+            });
+
+            // --- Initialization ---
+            if (totalCards > cardsPerPage) {
+                displayPage(1);
+                setupPagination();
+            } else {
+                 cards.forEach(card => card.classList.add('active-card'));
+                 paginationContainer.parentNode.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

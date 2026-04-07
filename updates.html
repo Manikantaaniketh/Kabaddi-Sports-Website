@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Latest Updates</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #2a0036; /* PKL purple */
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+    /* GRID */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 25px;
+    }
+
+    /* NEWS CARD */
+    .card {
+        background: #3a014a;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #fff;
+    }
+
+    .meta-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-top: 8px;
+        opacity: 0.75;
+    }
+
+    .share-icon {
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* MOBILE FRIENDLY */
+    @media(max-width: 600px){
+        .card img {
+            height: 200px;
+        }
+    }
+
+       
+/* contact */
+
+.kx-footer {
+  background: #111;
+  color: #bde0fe;;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.kx-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+}
+
+.kx-logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.kx-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color:#fca311;
+}
+
+.kx-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kx-column ul li {
+  margin: 8px 0;
+}
+
+.kx-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.kx-column ul li a:hover {
+  opacity: 1;
+  color:#fca311;
+}
+
+.kx-social i {
+  margin-right: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+
+<!--container -->
+<div class="container">
+    <h1>Latest Updates</h1>
+    <div class="grid">
+        <div class="card">
+            <img src="https://www.prokabaddi.com/static-assets/waf-images/17/b7/f8/16-9/jhlMqUc8s0.jpg?v=2.39&w=1920" alt="womens team">
+            <div class="card-content">
+                <div class="card-title">India women’s team wins second-straight Kabaddi World Cup</div>
+                <div class="meta-row">
+                    <span>News</span>
+                    <span class="share-icon">↗</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://media.oneturf.news/media/attachments/ANI-20251201093740_1764582000444.jpg" alt="womens">
+            <div class="card-content">
+                <div class="card-title">Women’s Kabaddi World Cup boosts global popularity – BKF Report</div>
+                <div class="meta-row">
+                    <span>News</span>
+                    <span class="share-icon">↗</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKpHqWbjL3Ms_jLWkAOJUGFkoaKMiS2jNfCQ&s" alt="womens">
+            <div class="card-content">
+                <div class="card-title">World Cup 2025 Dhaka: Results, Fixtures & Standings</div>
+                <div class="meta-row">
+                    <span>Features</span>
+                    <span class="share-icon">↗</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.prokabaddi.com/static-assets/waf-images/c2/a6/60/16-9/27MsBPbF6I.png" alt="mens">
+            <div class="card-content">
+                <div class="card-title">Top 5 Defenders of PKL 2025: Who Dominated?</div>
+                <div class="meta-row">
+                    <span>Features</span>
+                    <span class="share-icon">↗</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://assets.khelnow.com/news/uploads/2025/11/Ashu-Malik-Dabang-Delhi-Devank-Dalal-Bengal-Warriorz-and-pkl-12-logo.jpg" alt="men1">
+            <div class="card-content">
+                <div class="card-title">Top 5 Raiders of PKL 2025: Ayan & Devank Steal the Spotlight</div>
+                    <div class="meta-row">
+                    <span>Features</span>
+                    <span class="share-icon">↗</span>
+                    </div>
+                </div>
+            </div>
+
+<!-- Card 6 -->
+<div class="card">
+    <img src="https://staticg.sportskeeda.com/wp-content/uploads/2015/06/pinkwin-1434874000-800.jpg" alt="jaipur">
+    <div class="card-content">
+        <div class="card-title">PKL 12 Final: Jaipur Pink Panthers Lift the Trophy in Style</div>
+        <div class="meta-row">
+            <span>News</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3a6Kfig1lFtmefI44RyRxf-pQIK1bX8-tHA&s" alt="india">
+    <div class="card-content">
+        <div class="card-title">Indian Men’s Team Begins Training for Asian Kabaddi Championship</div>
+        <div class="meta-row">
+            <span>News</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+    <img src="https://www.prokabaddi.com/static-assets/waf-images/d4/36/f6/16-9/sOhojg4oPJ.jpg?v=2.39&w=1920" alt="highlights">
+    <div class="card-content">
+        <div class="card-title">PKL 12: Week 1 Highlights – Comebacks, Super Tackles & More</div>
+        <div class="meta-row">
+            <span>Highlights</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+    <img src="https://www.prokabaddi.com/static-assets/waf-images/2e/29/f7/16-9/2xItSbbdzO.jpg" alt="naveen kumar">
+    <div class="card-content">
+        <div class="card-title">Player Spotlight: Naveen Kumar Scores 20 Raid Points</div>
+        <div class="meta-row">
+            <span>Features</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+    <img src="https://media.telanganatoday.com/wp-content/uploads/2024/08/Untitled-3.jpg" alt="Federation">
+    <div class="card-content">
+        <div class="card-title">Kabaddi Expands Globally: 6 New Countries Join World Federation</div>
+        <div class="meta-row">
+            <span>News</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+    <img src="https://bunny-wp-pullzone-xx04unzsou.b-cdn.net/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-17-at-14.23.06.jpeg" alt="u-mumbai">
+    <div class="card-content">
+        <div class="card-title">U Mumba’s New Lineup Announced for PKL 2025 Season</div>
+        <div class="meta-row">
+            <span>Team News</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+    <img src="https://i.ytimg.com/vi/IvQ4VJy9thM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB0A8yJIIbg2v2iKFczgJZUHclYzA" alt="Surinder Singh ">
+    <div class="card-content">
+        <div class="card-title">Top 5 Corners of PKL 2025: Surinder Singh Leads Again</div>
+        <div class="meta-row">
+            <span>Analysis</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 13 -->
+<div class="card">
+    <img src="https://kabaddiarena.com/en/wp-content/uploads/2025/11/womens-kabaddi-world-cup-2025-bangladesh-full-schedule.webp" alt="kabaddi womens team">
+    <div class="card-content">
+        <div class="card-title">Women’s Kabaddi League 2025: Full Schedule & Teams Announced</div>
+        <div class="meta-row">
+            <span>Schedule</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 14 -->
+<div class="card">
+    <img src="https://staticg.sportskeeda.com/editor/2025/10/e776a-17611595508471-1920.jpg" alt="pkl">
+    <div class="card-content">
+        <div class="card-title">PKL 2025 Stats: Most Raid Points, Most Tackles & More</div>
+        <div class="meta-row">
+            <span>Stats</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 15 -->
+<div class="card">
+    <img src="https://i.ytimg.com/vi/IXvNNXZEpWE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBikjK3jbcNQ808VDTZ5h85L_Cb2Q" alt="pavan sehrawat">
+    <div class="card-content">
+        <div class="card-title">Exclusive Interview: Pawan Sehrawat Talks Comeback Plans</div>
+        <div class="meta-row">
+            <span>Interview</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+
+<!-- Card 16 -->
+<div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoId10VMzr90aQW6S4c73A1ky3voKRGukDPA&s" alt="mumbai">
+    <div class="card-content">
+        <div class="card-title">New Kabaddi Arena Inaugurated in Mumbai: A Boost for Youth</div>
+        <div class="meta-row">
+            <span>News</span>
+            <span class="share-icon">↗</span>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Player Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

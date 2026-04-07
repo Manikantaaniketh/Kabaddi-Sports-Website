@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Terms and Conditions</title>
+    <style>
+    
+        body {
+             font-family: Arial, sans-serif;
+             }
+        :root {
+
+    --bg-color: #1e1e1e; 
+    --text-color: #f5f5f5; 
+    --link-color: #3498db; 
+    --secondary-bg: #2d2d2d; 
+    --border-color: #444;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+    /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+/* --- Header Styling --- */
+.header {
+    padding: 20px 50px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.header p {
+    color: #aaa;
+    margin: 0;
+}
+
+/* --- Main Layout --- */
+.container {
+    display: flex;
+    padding: 20px 50px;
+}
+
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    margin-right: 40px;
+    position: sticky; 
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 1.2em;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-content {
+    flex-grow: 1;
+    min-width: 0; 
+}
+
+/* --- Sidebar Navigation --- */
+.search-box {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-right: none;
+}
+
+.search-box button {
+    background-color: var(--secondary-bg);
+    color: var(--link-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 8px 15px;
+}
+
+#sidebar-nav a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--secondary-bg);
+}
+
+#sidebar-nav a:hover {
+    color: var(--link-color);
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.tip {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Main Content Actions --- */
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.actions button {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.actions button:hover {
+    background-color: #3a3a3a;
+}
+
+/* --- Term Sections (Collapsible) --- */
+.term-section {
+    background-color: var(--secondary-bg);
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.section-title {
+    padding: 15px;
+    margin: 0;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* The custom triangle/chevron icon */
+.section-title::before {
+    content: '▼'; 
+    font-size: 0.8em;
+    margin-right: 10px;
+    color: var(--link-color);
+    transition: transform 0.3s ease;
+}
+
+
+.term-section.collapsed .section-title::before {
+    transform: rotate(-90deg); 
+}
+
+/* Content Area */
+.section-content {
+    padding: 0 15px 15px;
+    border-top: 1px solid var(--border-color);
+    overflow: hidden; 
+    max-height: 1000px; 
+    transition: max-height 0.5s ease-out, opacity 0.5s ease;
+}
+
+.section-content p {
+    margin: 10px 0;
+}
+
+/* Hidden state for collapsed content */
+.term-section.collapsed .section-content {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top: none;
+    opacity: 0;
+}
+
+ /* media */
+@media (max-width: 768px) {
+    
+    .header, .container {
+        padding: 15px 20px; 
+    }
+    .container {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px; 
+        position: static; 
+        background-color: var(--secondary-bg); 
+        padding: 15px;
+        box-sizing: border-box; 
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+    
+    .sidebar h2 {
+        border-bottom: none; 
+        padding-bottom: 0;
+    }
+    #sidebar-nav a {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .tip {
+        display: none; 
+    }
+
+    /* Action Buttons Adjustment */
+    .actions {
+        flex-wrap: wrap; 
+    }
+    
+    .actions button {
+        flex: 1 1 45%; 
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .header h1 {
+        font-size: 1.8em;
+    }
+}
+
+/*  Further adjustments for very small phones */
+@media (max-width: 480px) {
+    .actions button {
+        flex: 1 1 100%; 
+    }
+}
+      
+/* contact */
+
+.kx-footer {
+  background: #111;
+  color: #bde0fe;;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.kx-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+}
+
+.kx-logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.kx-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color:#fca311;
+}
+
+.kx-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kx-column ul li {
+  margin: 8px 0;
+}
+
+.kx-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.kx-column ul li a:hover {
+  opacity: 1;
+  color:#fca311;
+}
+
+.kx-social i {
+  margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Updates</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+    <header class="header">
+        <h1>Terms and Conditions</h1>
+        <p>Electronic record under the Information Technology Act, 2000. Please read carefully before using the Services.</p>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Contents</h2>
+            <div class="search-box">
+                <input type="text" id="searchTerm" placeholder="Search terms...">
+                <button id="clearSearch">Clear</button>
+            </div>
+            <nav id="sidebar-nav">
+                <a href="#intro" class="sidebar-link">Intro</a>
+                <a href="#compliance" class="sidebar-link">Compliance with laws</a>
+                <a href="#limitation" class="sidebar-link">Limitation of liability</a>
+                <a href="#indemnity" class="sidebar-link">Indemnity</a>
+                <a href="#governing" class="sidebar-link">Governing law and Jurisdiction</a>
+                <a href="#severability" class="sidebar-link">Severability</a>
+                <a href="#changes" class="sidebar-link">Changes to Terms</a>
+                <a href="#entire" class="sidebar-link">Entire agreement</a>
+                <a href="#rules" class="sidebar-link">#KabaddiXpress contest rules</a>
+            </nav>
+            <p class="tip">Tip: Use links to jump to sections. Print view is optimized.</p>
+        </aside>
+
+        <main class="main-content">
+            <div class="actions">
+                <button id="copyFullText">Copy full text</button>
+                <button id="expandAll">Expand all</button>
+                <button id="collapseAll">Collapse all</button>
+            </div>
+
+            <section class="term-section" id="intro">
+                <h3 class="section-title">Intro</h3>
+                <div class="section-content">
+                    <p><strong>Electronic record notice: agreement scope, acceptance.</strong></p>
+                    <p>This document is an electronic record in terms of Information Technology Act, 2000 and rules there under as applicable and the amended provisions pertaining to electronic records in various statutes as amended by the Information Technology Act, 2000. This electronic record is generated by a computer system and does not require any physical or digital signatures. This is a legal agreement between you, the user (‘You’) of the Services, as defined below, and KabaddiXpress Private Limited (‘KabaddiXpress’) stating the terms that govern Your use of the Site, as defined below. If You do not agree to these Terms and Conditions, you are not entitled to use the Services and any use thereafter shall be unauthorized.</p>
+                </div>
+            </section>
+
+            <section class="term-section" id="description">
+                <h3 class="section-title">Description of service and acceptance of terms of use</h3>
+                <div class="section-content">
+                    <p>The [www.kabaddixpress.com] website (the ‘Site’) hosts an online video service offering a selection of sports programming (including live streaming and highlights of sporting events), television shows, movies, clips, and other digital content (collectively, the ‘Content’). The Site may also include interactive features, such as polls, quizzes, and fantasy sports contests. By accessing or using the Site and/or Services, you signify that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+                </div>
+            </section>
+            
+            <section class="term-section" id="compliance">
+                <h3 class="section-title">Compliance with laws</h3>
+                <div class="section-content">
+                    <p>You agree to comply with all applicable local, state, national, and international laws, rules and regulations in connection with Your use of the Services, including but not limited to laws regarding online conduct and acceptable content. You are responsible for ensuring that Your use of the Services is not prohibited by local laws or regulations.</p>
+                </div>
+            </section>
+
+            <section class="term-section" id="limitation">
+                <h3 class="section-title">Limitation of liability</h3>
+                <div class="section-content">
+                    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL KABADDING EXPRESS, ITS AFFILIATES, DIRECTORS, EMPLOYEES, OR LICENSORS BE LIABLE FOR ANY DIRECT, INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, DATA OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATING TO THE USE OF, OR INABILITY TO USE, THE SERVICE.</p>
+                </div>
+            </section>
+
+            <section class="term-section" id="indemnity">
+                <h3 class="section-title">Indemnity</h3>
+                <div class="section-content">
+                    <p>You agree to defend, indemnify, and hold harmless KabaddiXpress and its affiliates, agents, licensors, managers, and other affiliated companies, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney’s fees) arising from: (i) Your use of and access to the Service, including any data or content transmitted or received by You; (ii) Your violation of any term of this Agreement; (iii) Your violation of any third-party right, including without limitation any right of privacy or Intellectual Property Rights; (iv) Your violation of any applicable law, rule or regulation; (v) any other party’s access and use of the Service with Your unique username, password or other appropriate security code.</p>
+                </div>
+            </section>
+            
+            <section class="term-section" id="governing">
+                <h3 class="section-title">Governing law and Jurisdiction</h3>
+                <div class="section-content">
+                    <p>This Agreement shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions. You agree to submit to the exclusive jurisdiction of the courts located in [Your City, State/Province, e.g., Mumbai, Maharashtra] to resolve any legal matter arising from the Agreement.</p>
+                </div>
+            </section>
+            
+            <section class="term-section" id="severability">
+                <h3 class="section-title">Severability</h3>
+                <div class="section-content">
+                    <p>If any provision of these Terms is found to be unlawful, void, or for any reason unenforceable, then that provision shall be deemed severable from these Terms and shall not affect the validity and enforceability of any remaining provisions.</p>
+                </div>
+            </section>
+
+            <section class="term-section" id="changes">
+                <h3 class="section-title">Changes to Terms</h3>
+                <div class="section-content">
+                    <p>KabaddiXpress reserves the right to change, modify, add, or remove portions of these Terms at any time. We will provide notice of significant changes by posting the updated Terms on the Site. Your continued use of the Services after such notice constitutes your acceptance of the revised Terms.</p>
+                </div>
+            </section>
+
+            <section class="term-section" id="entire">
+                <h3 class="section-title">Entire agreement</h3>
+                <div class="section-content">
+                    <p>These Terms, together with any amendments and any additional agreements you may enter into with KabaddiXpress in connection with the Service, shall constitute the entire agreement between you and KabaddiXpress concerning the Service.</p>
+                </div>
+            </section>
+            
+            <section class="term-section" id="rules">
+                <h3 class="section-title">#KabaddiXpress contest rules</h3>
+                <div class="section-content">
+                    <p>Participation in any contest, game, or competition offered on the Site, including fantasy sports or prediction challenges, is subject to the official rules provided for that specific event, in addition to these Terms. You acknowledge that these contests may involve skill and/or chance, and your eligibility and prize entitlements are governed strictly by the contest rules.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Kabaddi Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.term-section');
+    const expandAllButton = document.getElementById('expandAll');
+    const collapseAllButton = document.getElementById('collapseAll');
+    const copyFullTextButton = document.getElementById('copyFullText');
+
+    //  Toggle Functionality 
+    const toggleSection = (section) => {
+        section.classList.toggle('collapsed');
+    };
+
+    sections.forEach(section => {
+        // By default, collapse all except the first one (Intro)
+        if (section.id !== 'intro') {
+            section.classList.add('collapsed');
+        }
+
+        const title = section.querySelector('.section-title');
+        if (title) {
+            title.addEventListener('click', () => toggleSection(section));
+        }
+    });
+
+    //  Collapse All Buttons 
+    expandAllButton.addEventListener('click', () => {
+        sections.forEach(section => section.classList.remove('collapsed'));
+    });
+
+    collapseAllButton.addEventListener('click', () => {
+        sections.forEach(section => section.classList.add('collapsed'));
+    });
+
+    // Copy Full Text Button 
+    copyFullTextButton.addEventListener('click', () => {
+        const mainContent = document.querySelector('.main-content');
+        let fullText = 'KABADDIXPRESS TERMS AND CONDITIONS\n\n';
+        
+        
+        const initiallyCollapsed = [];
+        sections.forEach(section => {
+            if (section.classList.contains('collapsed')) {
+                section.classList.remove('collapsed');
+                initiallyCollapsed.push(section);
+            }
+        });
+
+        // Loop through all sections and assemble text
+        sections.forEach(section => {
+            const title = section.querySelector('.section-title').textContent.trim();
+            const content = section.querySelector('.section-content').textContent.trim();
+            fullText += `\n--- ${title.toUpperCase()} ---\n\n${content}\n`;
+        });
+
+        // Re-collapse 
+        initiallyCollapsed.forEach(section => section.classList.add('collapsed'));
+
+        // Copy to clipboard 
+        navigator.clipboard.writeText(fullText).then(() => {
+            const originalText = copyFullTextButton.textContent;
+            copyFullTextButton.textContent = 'Copied!';
+            setTimeout(() => {
+                copyFullTextButton.textContent = originalText;
+            }, 1500);
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+            alert('Failed to copy text. Please try selecting and copying manually.');
+        });
+    });
+    
+    //  Sidebar Scroll to Section
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Scroll smoothly to the target section
+                window.scrollTo({
+                    top: targetElement.offsetTop - 30, // Offset for a little padding
+                    behavior: 'smooth'
+                });
+                
+               
+                link.classList.add('active-scroll');
+                setTimeout(() => {
+                    link.classList.remove('active-scroll');
+                }, 1000);
+            }
+        });
+    });
+});
+    </script>
+</body>
+</html>

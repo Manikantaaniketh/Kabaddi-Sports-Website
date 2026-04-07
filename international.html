@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>international Table</title>
+    <style>
+  body {
+        font-family: Arial, sans-serif;
+        background: #2a0036; /* PKL purple */
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+  /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+    /*2nd nav*/
+    .nav{
+        background-color:#9b5de5 ;
+        padding: 20px;
+        height:50px;    
+    }
+    .nav h2{
+       color:black;
+    }
+
+/*table*/
+.content-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1rem;
+    color: black;
+    margin: 30px;
+    margin-left: 150px;
+    width:1200px;
+   
+}
+
+/* Header */
+.content-table thead tr {
+    background-color: #0a9a8c; 
+}
+
+
+.content-table th,
+.content-table td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.content-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;  
+}
+
+.content-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;  
+}
+
+.content-table tbody tr {
+    border: none;
+}
+
+/* companies img */
+
+.trusted-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  margin-top: 50px;
+
+}
+
+.trusted-section h2 {
+  font-size: 32px;
+  margin-bottom: 35px;
+  font-weight: 600;
+   font-family: "Science Gothic", sans-serif;
+  font-optical-sizing: auto;
+  color:black;
+  text-decoration: underline;
+ 
+}
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 0;
+}
+
+.logo-row img {
+  height: 60px;
+  filter: grayscale(100%);
+  opacity: 0.9;
+  transition: 0.3s ease;
+
+}
+
+.logo-row img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.05);
+}
+       
+/* contact */
+
+.kx-footer {
+  background: #111;
+  color: #fca311;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.kx-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+}
+
+.kx-logo {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.kx-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color:#fca311;
+}
+
+.kx-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kx-column ul li {
+  margin: 8px 0;
+}
+
+.kx-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.kx-column ul li a:hover {
+  opacity: 1;
+  color:#fca311;
+}
+
+.kx-social i {
+  margin-right: 10px;
+}
+
+    </style>
+</head>
+<body>
+ 
+  <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+<div class="nav">
+    <h2>Pro Kabaddi League Points Table</h2>
+</div>
+
+<table class="content-table">
+<thead>
+    <tr>
+        <th>Pos</th>
+        <th>Team</th>
+        <th>P</th>
+        <th>W</th>
+        <th>L</th>
+        <th>Score Diff</th>
+        <th>Pts</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>1</td>
+        <td>India</td>
+        <td>18</td>
+        <td>13</td>
+        <td>05</td>
+        <td>88</td>
+        <td>26</td>
+    </tr>
+     <tr>
+        <td>2</td>
+        <td>Iran</td>
+        <td>18</td>
+        <td>13</td>
+        <td>05</td>
+        <td>38</td>
+        <td>26</td>
+    </tr>
+     <tr>
+        <td>3</td>
+        <td>South Korea</td>
+        <td>18</td>
+        <td>11</td>
+        <td>07</td>
+        <td>97</td>
+        <td>22</td>
+    </tr>
+     <tr>
+        <td>4</td>
+        <td>USA</td>
+        <td>18</td>
+        <td>10</td>
+        <td>08</td>
+        <td>45</td>
+        <td>20</td>
+    </tr>
+     <tr>
+        <td>5</td>
+        <td>Argentina</td>
+        <td>18</td>
+        <td>10</td>
+        <td>08</td>
+        <td>40</td>
+        <td>20</td>
+    </tr>
+     <tr>
+        <td>6</td>
+        <td>Australia</td>
+        <td>18</td>
+        <td>10</td>
+        <td>08</td>
+        <td>08</td>
+        <td>20</td>
+    </tr>
+     <tr>
+        <td>7</td>
+        <td>Kenya</td>
+        <td>18</td>
+        <td>08</td>
+        <td>10</td>
+        <td>10</td>
+        <td>16</td>
+    </tr>
+     <tr>
+        <td>8</td>
+        <td>Bangladesh</td>
+        <td>18</td>
+        <td>08</td>
+        <td>10</td>
+        <td>-48</td>
+        <td>16</td>
+    </tr>
+     <tr>
+        <td>9</td>
+        <td>Srilanka</td>
+        <td>18</td>
+        <td>07</td>
+        <td>11</td>
+        <td>-65</td>
+        <td>14</td>
+    </tr>
+     <tr>
+        <td>10</td>
+        <td>Pakistan</td>
+        <td>18</td>
+        <td>06</td>
+        <td>12</td>
+        <td>-36</td>
+        <td>12</td>
+    </tr>
+     <tr>
+        <td>11</td>
+        <td>canada</td>
+        <td>18</td>
+        <td>06</td>
+        <td>12</td>
+        <td>-73</td>
+        <td>12</td>
+    </tr>
+     <tr>
+        <td>12</td>
+        <td>Uganda</td>
+        <td>18</td>
+        <td>06</td>
+        <td>12</td>
+        <td>-104</td>
+        <td>12</td>
+    </tr>
+</tbody>
+</table>
+
+<!-- comapany images -->
+<div class="trusted-section"><i class="fa-thumbprint fa-light fa-angle-left"></i>
+  <h2>Trusted By</h2>
+
+  <div class="logo-row">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+    <img src="under.png" alt="Under Armour">
+    <img src="puma.png" alt="Puma">
+    <img src="balance.png" alt="New Balance">
+  </div>
+</div>
+
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Player Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

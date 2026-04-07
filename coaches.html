@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching Command | KabaddiXpress</title>
+    <style>
+        :root {
+            --primary-red: #E30613;
+            --dark-bg: #0A0A0A;
+            --light-text: #F5F5F5;
+            --card-bg: #1C1C1C;
+            --accent-blue: #0077B6; 
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+
+        /* === MAIN COACHES PAGE STYLING === */
+        .coaches-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* === HEADER STYLING === */
+        .coaches-header {
+            text-align: center;
+            padding: 40px 20px 60px;
+            border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 40px;
+        }
+
+        .coaches-header h1 {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--primary-red);
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+        }
+
+        .coaches-header h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: var(--light-text);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-intro {
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* === COACH CARD GRID === */
+        .coaches-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .coach-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--card-bg);
+        }
+
+        .coach-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .coach-photo-area {
+            height: 250px; 
+            background-size: cover;
+            background-position: center top;
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* === THE IMAGE FIX IS HERE: URLS NOW MATCH YOUR FILES (.png) === */
+        /* ------------------------------------------------------------------ */
+        
+        /* Head Coach: Krishan Kumar Hooda */
+        #coach-head .coach-photo-area { 
+            background: linear-gradient(to top, rgba(28, 28, 28, 0.8) 0%, transparent 60%), 
+                        url('krishna.png') no-repeat center top; 
+            background-size: cover;
+        }
+        
+        /* Assistant Coach: BC Ramesh */
+        #coach-assistant .coach-photo-area { 
+            background: linear-gradient(to top, rgba(28, 28, 28, 0.8) 0%, transparent 60%), 
+                        url('ramesh.png') no-repeat center top; 
+            background-size: cover;
+        }
+        
+        /* Conditioning Coach: Manpreet Singh */
+        #coach-fitness .coach-photo-area { 
+            background: linear-gradient(to top, rgba(28, 28, 28, 0.8) 0%, transparent 60%), 
+                        url('manpreet.png') no-repeat center top; 
+            background-size: cover;
+        }
+        
+        /* ------------------------------------------------------------------ */
+        /* === END PHOTO FIX === */
+        /* ------------------------------------------------------------------ */
+
+        .coach-details {
+            padding: 20px;
+        }
+
+        .coach-details h3 {
+            color: var(--primary-red);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            color: var(--accent-blue);
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .philosophy-quote {
+            font-style: italic;
+            font-size: 0.9em;
+            margin: 15px 0;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-blue);
+            opacity: 0.8;
+        }
+
+        .focus-area h4 {
+            color: var(--light-text);
+            margin-top: 20px;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .focus-area ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        .focus-area li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .focus-area li::before {
+            content: "•";
+            color: var(--primary-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .view-bio-btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .view-bio-btn:hover {
+            background-color: #ff3340;
+        }
+
+        /* === FOOTER STYLING === */
+        .strategy-footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 40px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .strategy-footer a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .strategy-footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* ==================================================== */
+        /* MEDIA QUERIES (Responsiveness)                       */
+        /* ==================================================== */
+
+        /* Tablet and smaller desktops (Max width 992px) */
+        @media (max-width: 992px) {
+            .coaches-header h1 {
+                font-size: 2.5em;
+            }
+            .coaches-header h2 {
+                font-size: 1.2em;
+            }
+            .coaches-list {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 20px;
+            }
+            /* Navbar adjustments */
+            .navbar h1 {
+                font-size: 1.5em;
+            }
+            .buttons {
+                right: 15px;
+            }
+        }
+
+        /* Mobile Devices (Max width 600px) */
+        @media (max-width: 600px) {
+            .coaches-header {
+                padding: 30px 10px 40px;
+            }
+            .coaches-header h1 {
+                font-size: 2em;
+                letter-spacing: 2px;
+            }
+            .coaches-header h2 {
+                font-size: 1em;
+            }
+            .coaches-list {
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+            .coach-card {
+                max-width: 100%; 
+                margin: 0;
+            }
+            .coach-photo-area {
+                height: 200px;
+            }
+            .coach-details h3 {
+                font-size: 1.4em;
+            }
+            /* Navbar adjustments for small screens */
+            .navbar {
+                height: auto;
+                padding: 10px;
+                text-align: center;
+            }
+            .buttons {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Update</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+
+
+    <div class="coaches-container">
+        <header class="coaches-header">
+            <h1>THE ARCHITECTS OF VICTORY</h1>
+            <h2>MEET THE KABADDIXPRESS COACHING COMMAND</h2>
+            <p class="philosophy-intro">Our strategy is built on analysis, discipline, and the relentless pursuit of the perfect raid.</p>
+        </header>
+
+        <section class="coaches-list">
+            
+            <div class="coach-card" id="coach-head">
+                <div class="coach-photo-area">
+                </div>
+                <div class="coach-details">
+                    <h3>Krishan Kumar Hooda</h3>
+                    <p class="role">Head Coach, Strategy & Tactics</p>
+                    <blockquote class="philosophy-quote">
+                        "Attack wins matches, but defense wins tournaments. Our foundation is unyielding."
+                    </blockquote>
+                    <div class="focus-area">
+                        <h4>Strategic Focus</h4>
+                        <ul>
+                            <li>Expert in Defensive Formations and Zone Tactics</li>
+                            <li>Specialist in Advanced Raider Momentum Analysis</li>
+                            <li>Key Achievements: 3 League Titles, Mentored 5 MVP Raiders</li>
+                        </ul>
+                    </div>
+                    <a href="krishna.png" class="view-bio-btn">View Full Bio & Vision</a>
+                </div>
+            </div>
+
+            <div class="coach-card" id="coach-assistant">
+                <div class="coach-photo-area">
+                </div>
+                <div class="coach-details">
+                    <h3>BC Ramesh </h3>
+                    <p class="role">Head Coach, Strategy & Tactics</p>
+                    <blockquote class="philosophy-quote">
+                        "Every player has a 'super-raid' moment inside them. My job is to unlock it."
+                    </blockquote>
+                    <div class="focus-area">
+                        <h4>Strategic Focus</h4>
+                        <ul>
+                            <li>Focus on Youth Integration and Talent Scouting</li>
+                            <li>Advanced Drill Implementation for Corner Specialists</li>
+                            <li>Key Achievements: Developed 2 Rising Star Award winners</li>
+                        </ul>
+                    </div>
+                    <a href="ramesh.png" class="view-bio-btn">View Full Bio & Vision</a>
+                </div>
+            </div>
+
+            <div class="coach-card" id="coach-fitness">
+                <div class="coach-photo-area">
+                </div>
+                <div class="coach-details">
+                    <h3>Manpreet Singh </h3>
+                    <p class="role">Head Coach, Strategy & Tactics</p>
+                    <blockquote class="philosophy-quote">
+                        "The mind breaks before the body. We train both to sustain the 40-minute war."
+                    </blockquote>
+                    <div class="focus-area">
+                        <h4>Strategic Focus</h4>
+                        <ul>
+                            <li>Injury Prevention Protocols and Rapid Recovery Techniques</li>
+                            <li>Specialized Training for Raider Endurance and Agility</li>
+                            <li>Key Achievements: Lowest Injury Rate in the League (2 seasons)</li>
+                        </ul>
+                    </div>
+                    <a href="manpreet.png" class="view-bio-btn">View Full Bio & Vision</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <footer class="strategy-footer">
+            <p>Ready to see the strategy in action? <a href="/schedul.html">View Our Match Schedule</a></p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const coachCards = document.querySelectorAll('.coach-card');
+
+            coachCards.forEach(card => {
+                // Optional: Add a class on hover for deeper visual feedback if needed
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 8px 25px rgba(227, 6, 19, 0.4)'; // Subtle red glow on hover
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.5)'; // Reset shadow
+                });
+
+                const bioButton = card.querySelector('.view-bio-btn');
+                if (bioButton) {
+                    bioButton.addEventListener('click', (e) => {
+                        // Prevents the default action if the href is a placeholder (#bio-ankit)
+                        // It does NOT prevent navigation if the href is a file (krishna.png)
+                        if (bioButton.getAttribute('href').startsWith('#')) {
+                            e.preventDefault();
+                            const coachName = card.querySelector('h3').textContent;
+                            alert(`Loading full profile for ${coachName}...`);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

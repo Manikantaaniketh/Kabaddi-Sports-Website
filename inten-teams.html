@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Teams</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="inten-teams.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Updates</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+
+<div class="container my-3 d-flex justify-content-center">
+    <div style="width: 280px;">
+        <input 
+            type="text" 
+            id="playerSearch" 
+            class="form-control"
+            placeholder="Search player..."
+            oninput="searchPlayer()"
+            style="border-radius: 20px;"
+        >
+        <p id="searchError" class="text-danger text-center mt-1" style="display:none; font-size: 14px;">
+            ❌ Player not found
+        </p>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <!--  TEAM 1 -->
+        <div class="col-md-4">
+            <div class="team-card">
+                <div class="team-title">India</div>
+
+                <table class="table custom-table text-white">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>Pos</th>
+                            <th>Jersey</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Arjun Deshwal</td><td>Raider</td><td>01</td></tr>
+                        <tr><td>2</td><td>Naveen Kumar</td><td>Raider</td><td>12</td></tr>
+                        <tr><td>3</td><td>Sachin</td><td>Raider</td><td>10</td></tr>
+                        <tr><td>4</td><td>Aslam inamdar</td><td>All Rounder</td><td>11</td></tr>
+                        <tr><td>5</td><td>Mohit Goyat</td><td>Raider</td><td>02</td></tr>
+                        <tr><td>6</td><td>Sunil Kumar</td><td>All-Rounder</td><td>13</td></tr>
+                        <tr><td>7</td><td>Nithin Rawal</td><td>All Rounder</td><td>07</td></tr>
+                        <tr><td>8</td><td>Nitesh Kumar</td><td>All Rounder</td><td>22</td></tr>
+                        <tr><td>9</td><td>Surjeet Singh</td><td>Defender</td><td>77</td></tr>
+                        <tr><td>10</td><td>Vishal Bhardwaj</td><td>Defender</td><td>78</td></tr>
+                        <tr><td>11</td><td>shubham shinde</td><td>Defender</td><td>42</td></tr>
+                        <tr><td>12</td><td>Pawan Sherwat</td><td>All Rounder</td><td>09</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--  TEAM 2 -->
+        <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Bangladesh</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Md Liton Ali</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Md Mahmudul Hasan</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Arif Ershad</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Shah Md Shahan</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Md Ismail Hasan</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Rizoul Ahsan</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Riona Sodan</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Emon Gazi</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Al Amin Hossain</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Monirul Chowdhury</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Shakib Al Hasan</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Rahman Hossain</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- TEAM 3 -->
+       <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Sri Lanka</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Aslam Sabeel</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Dulan Maduranga</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Ishan Nimshan</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Benci Baso</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>S. Niroodha Pathirana</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Akhila Lakshan W.</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Maheshika P. Jayavikrama</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Mohamed Happee</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Mohammed Sakirin</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Sithija Jayasinghe</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Wasantha</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Mohamed N.A.</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- TEAM 4 -->
+    <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Iran</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Fazel Atrachali</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Md. Reza Shadlu</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Moein Nabibakhsh</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Amir Bastami</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Milad Jabbari</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Reza Mirbagheri</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Alireza M</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Md. Kazem Naseri</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Amir Zafardanesh</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Hamid Nader</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Reza Katoulinzhad</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Moein Shafaghi</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- TEAM 5 -->
+       <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">South Korea</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Jangkun Lee</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Gyungtae Kim</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Young Chang Ko</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Dong Gyu Kim</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Dong Geon Lee</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Woosang Ko</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Jong Hoon Choi</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Ji Hwan Kim</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Junseok An</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Haneol Kim</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Yeojun Ryu</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Keonmyeong Kim</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- TEAM 6 -->
+       <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Japan</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Okadera</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Miyazaki</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Jenson</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Yuta</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Yamashita</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Okada</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Nishikawa</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Mishiro</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Mimoto</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Nishitani</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Yamamoto</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Ute</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <!-- TEAM 7 -->
+        <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Australia</div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Bhan</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Bhargav</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Rushi</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Amrit</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Noor</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Ram</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Balaji</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Dalla</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Manni</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Chota</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Harjit</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Gurpreet</td><td>Raider</td><td>03</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">CHINESE TAIPEI</div>
+        <table class="table custom-table text-white">
+            <tbody>
+                <tr><td>1</td><td>TSAI CHING HAO</td><td>Raider</td><td>09</td></tr>
+                <tr><td>2</td><td>HUANG JIH HUNG</td><td>Raider</td><td>08</td></tr>
+                <tr><td>3</td><td>CHANG CHIA MING</td><td>Raider</td><td>88</td></tr>
+                <tr><td>4</td><td>LIN TCHING</td><td>Raider</td><td>67</td></tr>
+                <tr><td>5</td><td>YOU HAO CHENG</td><td>Defender</td><td>69</td></tr>
+                <tr><td>6</td><td>ZHANG CHONG MAO</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>WU WEI ZENG</td><td>Defender</td><td>01</td></tr>
+                <tr><td>8</td><td>HUANG TZU MING</td><td>Defender</td><td>60</td></tr>
+                <tr><td>9</td><td>CHEN ZHENG WEI</td><td>Defender</td><td>90</td></tr>
+                <tr><td>10</td><td>PENG XIAN YA</td><td>Defender</td><td>99</td></tr>
+                <tr><td>11</td><td>HUNG TZU HAO</td><td> All-Rounder</td><td>23</td></tr>
+                <tr><td>12</td><td>LIN WEI HUNG</td><td>All-Rounder</td><td>32</td></tr>
+             
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        <!-- TEAM 9 -->
+  <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Nepal </div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Ram.T </td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Ghaneshtam.M</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Ganesh.P</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Aakash.B</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Bijay.D</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Sarman.P</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Dipendra.Y</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Sabary.Y</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Isarar.K</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Prakash.B</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td> Parvati Rai</td><td>Defender</td><td>90</td></tr>
+                <tr><td>12</td><td>CHANG CHENG CHIH</td><td>All-Rounder</td><td>99</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+        <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">THAILAND </div>
+        <table class="table custom-table text-white">
+            <tbody>
+                <tr><td>1</td><td>ANURAK PHANRAM</td><td>Raider</td><td>12</td></tr>
+                <tr><td>2</td><td>KISSADA NILWAI</td><td>Raider</td><td>34</td></tr>
+                <tr><td>3</td><td>NAKHON PHONGPHROM</td><td>Raider</td><td>13</td></tr>
+                <tr><td>4</td><td>AMORNTHEP KONHAN</td><td>Raider</td><td>45</td></tr>
+                <tr><td>5</td><td>SUPHAKORN JENTHAISONG</td><td>Raider</td><td>89</td></tr>
+                <tr><td>6</td><td>KHONLAK THONGKHAM</td><td>All-Rounder</td><td>98</td></tr>
+                <tr><td>7</td><td>PHUWANAT SUBPHALAK</td><td>All-Rounder</td><td>99</td></tr>
+                <tr><td>8</td><td>AMARIN KHEMANAT</td><td>All-Rounder</td><td>10</td></tr>
+                <tr><td>9</td><td>SUPHAKIT JUNTARASUK</td><td>Defender</td><td>11</td></tr>
+                <tr><td>10</td><td>TANA PATCHARAPHOL</td><td>Defender</td><td>01</td></tr>
+                <tr><td>11</td><td>BOONRUT THAILUANG</td><td>Defender</td><td>61</td></tr>
+                <tr><td>12</td><td>THIRAPAT CHALOEISI</td><td>Defender</td><td>42</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        <!-- TEAM 11 -->
+       <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">Kenya </div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Moses Atenya</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Martin Mbutu</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Yesh Patel</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>Kevin Manyama</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Benjamin Muthee</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Joseph Irungu</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Abduba Jattani</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Cosmas Nathan</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Samuel Njogu</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Amos Macharia</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Amos Kagiri Macharia</td><td>Raider</td><td>07</td></tr>
+                <tr><td>12</td><td>Hiren Pathak</td><td>Raider</td><td>03</td></tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        <!-- TEAM 12 -->
+        <div class="col-md-4">
+    <div class="team-card">
+        <div class="team-title">England </div>
+
+        <table class="table custom-table text-white">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Pos</th>
+                    <th>Jersey</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Someshwar Kalia</td><td>Defender</td><td>03</td></tr>
+                <tr><td>2</td><td>Keshav Gupta</td><td>Defender</td><td>13</td></tr>
+                <tr><td>3</td><td>Felix U</td><td>Raider</td><td>09</td></tr>
+                <tr><td>4</td><td>George Wellington</td><td>All Rounder</td><td>08</td></tr>
+                <tr><td>5</td><td>Vinay Gupta</td><td>Defender</td><td>11</td></tr>
+                <tr><td>6</td><td>Yuvraj Pandya</td><td>Defender</td><td>05</td></tr>
+                <tr><td>7</td><td>Ahilan Parthipan</td><td>Defender</td><td>09</td></tr>
+                <tr><td>8</td><td>Milan Nayee</td><td>Raider</td><td>79</td></tr>
+                <tr><td>9</td><td>Mohammed Kabir</td><td>Defender</td><td>08</td></tr>
+                <tr><td>10</td><td>Thomas Dawtrey</td><td>Raider</td><td>10</td></tr>
+                <tr><td>11</td><td>Dennis Seupei</td><td>Raider</td><td>34</td></tr>
+                <tr><td>12</td><td>Eric Nzioka Musau</td><td>Raider</td><td>11</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- contact -->
+<footer class="kx-footer">
+  <div class="kx-container">
+    
+    <!-- Logo -->
+    <div class="kx-column">
+      <h1 class="kx-logo">KabaddiXpress</h1>
+    </div>
+
+    <!-- Built for Athletes -->
+    <div class="kx-column">
+      <h3>Built For Athletes</h3>
+      <ul>
+        <li><a href="KabaddiAuction.html">Player Auction</a></li>
+        <li><a href="highlights.html">Match Highlights</a></li>
+        <li><a href="rules.html">Player Rules</a></li>
+        <li><a href="updates.html">Kabaddi News</a></li>
+      </ul>
+    </div>
+
+    <!-- Find Talent -->
+    <div class="kx-column">
+      <h3>Find Talent</h3>
+      <ul>
+        <li><a href="coaches.html">Coaches</a></li>
+        <li><a href="referees.html">Referees</a></li>
+       
+      </ul>
+    </div>
+
+    <!-- KabaddiXpress Links -->
+    <div class="kx-column">
+      <h3>KabaddiXpress</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="terms.html">Terms & Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="kx-column">
+      <h3>Social</h3>
+      <ul class="kx-social">
+        <li><a href="https://www.instagram.com/stories/_manikanta12/"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://x.com/Manikan33621915"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://www.youtube.com/@Manikanta-xy7tw"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100055196694589"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/manikanta-aniketh-bondugula/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+function searchPlayer() {
+    let input = document.getElementById("playerSearch").value.toLowerCase();
+    let tables = document.querySelectorAll(".custom-table tbody tr");
+    let found = false;
+
+    tables.forEach(row => {
+        let playerName = row.cells[1].textContent.toLowerCase();
+
+        if (playerName.includes(input) && input !== "") {
+            row.style.display = "";
+            row.closest(".team-card").style.display = "";
+            found = true;
+        } else {
+            row.style.display = "none";
+        }
+    });
+
+    // Show all teams again if input is empty
+    if (input === "") {
+        tables.forEach(row => row.style.display = "");
+        document.querySelectorAll(".team-card").forEach(card => card.style.display = "");
+        document.getElementById("searchError").style.display = "none";
+        return;
+    }
+
+    // Hide team cards that have no visible rows
+    document.querySelectorAll(".team-card").forEach(card => {
+        let visibleRows = card.querySelectorAll("tbody tr:not([style*='display: none'])");
+        card.style.display = visibleRows.length ? "" : "none";
+    });
+
+    // Error message
+    document.getElementById("searchError").style.display = found ? "none" : "block";
+}
+</script>
+
+
+</body>
+</html>

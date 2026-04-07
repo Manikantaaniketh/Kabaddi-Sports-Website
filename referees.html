@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officiating Command | KabaddiXpress</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- 1. Global Variables & Base Styles (Based on your Screenshots) --- */
+        :root {
+            --bg-color: #121212; /* Dark background */
+            --card-bg: #1c1c1c; /* Slightly lighter card background */
+            --primary-red: #D60000; /* Main accent color */
+            --accent-blue: #0077B6; /* Secondary accent color (for Tech) */
+            --accent-green: #00CC44; /* Tertiary accent color (for International) */
+            --text-color: #ffffff;
+            --secondary-text: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+       /*navbar*/
+   .navbar {
+        background: linear-gradient(90deg, #ff4d00, #ffb703);
+        padding: 0 30px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+
+    .navbar h1 {
+        color: black;
+        margin: 0;
+        }
+
+    .nav-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-links:hover {
+    color: #fca311;
+    }
+
+    .nav-links a {
+    color: black;
+    padding: 12px 16px;
+    padding-left: 40px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .nav-links a:hover {
+    color:white;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    margin-top: 2px;
+    border-radius: 4px;
+    list-style-type: none;
+    }
+
+    .dropdown-content li a {
+    padding: 10px 8px;
+    color:#fca311
+    }
+
+    .dropdown-content li a:hover {
+    text-decoration: underline;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+
+    .dropdown:hover .arrow {
+    font-size: 12px;
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+    }
+
+/*ref*/
+        .container1 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .referee-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .referee-header h1 {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: var(--primary-red);
+            letter-spacing: 5px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .referee-header h2 {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .referee-header p {
+            color: var(--secondary-text);
+            margin-top: 20px;
+        }
+
+        .referees-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        .referee-card {
+            width: 100%;
+            max-width: 350px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border-top: 5px solid var(--primary-red);
+        }
+
+        .referee-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(214, 0, 0, 0.5);
+        }
+        .tech-model {
+            border-top-color: var(--accent-blue);
+        }
+        .international-model {
+            border-top-color: var(--accent-green);
+        }
+        .tech-model:hover {
+            box-shadow: 0 10px 30px rgba(0, 119, 182, 0.5);
+        }
+        .international-model:hover {
+            box-shadow: 0 10px 30px rgba(0, 204, 68, 0.5);
+        }
+
+
+        /* Image Area */
+        .referee-photo-area {
+            height: 250px;
+            background-size: cover;
+            background-position: center top;
+            overflow: hidden;
+            position: relative;
+        }
+        #ref-veteran .referee-photo-area {
+            background-image: url('pawan\ sharma.jpeg');
+        }
+        #ref-tech .referee-photo-area {
+            background-image: url('https://www.prokabaddi.com/static-assets/waf-images/ca/73/ac/4-3/1lJR3L6wTm.png?v=2.39&w=1024');
+        }
+        #ref-international .referee-photo-area {
+            background-image: url('https://ss-i.thgim.com/public/incoming/3bll7l/article67947050.ece/alternates/LANDSCAPE_1200/Picture%20-%202024-03-13T184858.597.jpg');
+        }
+
+
+        /* Details */
+        .referee-details {
+            padding: 20px;
+        }
+        .referee-details h3 {
+            font-size: 1.8em;
+            color: var(--text-color);
+            margin: 0 0 5px;
+        }
+        .referee-details .role {
+            font-size: 1em;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .tech-model .role {
+            color: var(--accent-blue);
+        }
+        .international-model .role {
+            color: var(--accent-green);
+        }
+
+        .referee-details .quote {
+            font-style: italic;
+            color: var(--secondary-text);
+            margin: 15px 0 20px;
+            padding: 0 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+        
+        .focus-area {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .focus-area h4 {
+            color: var(--primary-red);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .focus-area ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.95em;
+            color: var(--secondary-text);
+        }
+        .focus-area li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .focus-area li::before {
+            content: "•";
+            color: var(--primary-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+        .tech-model .focus-area li::before {
+            color: var(--accent-blue);
+        }
+        .international-model .focus-area li::before {
+            color: var(--accent-green);
+        }
+
+        .view-profile-btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+        }
+
+        .view-profile-btn:hover {
+            background-color: #A00000;
+        }
+        .tech-model .view-profile-btn {
+            background-color: var(--accent-blue);
+        }
+        .tech-model .view-profile-btn:hover {
+            background-color: #005f96;
+        }
+        .international-model .view-profile-btn {
+            background-color: var(--accent-green);
+        }
+        .international-model .view-profile-btn:hover {
+            background-color: #00A035;
+        }
+
+        /* 4. Media Queries  */
+        @media (max-width: 1024px) {
+            .referees-list {
+                gap: 20px;
+            }
+            .referee-card {
+                max-width: 320px;
+            }
+        }
+        @media (max-width: 768px) {
+            .referee-header h1 {
+                font-size: 2.5em;
+                letter-spacing: 3px;
+            }
+            .referee-header h2 {
+                font-size: 1.2em;
+            }
+            .referees-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .referee-card {
+                max-width: 90%;
+            }
+            .view-profile-btn {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <h1>KabaddiXpress</h1>
+    <ul class="nav-links">
+        <li><a href="Kabaddi.html">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Matches <span class="arrow">▼</span></a>
+            <ul class="dropdown-content">
+            <li><a href="pkl-matches.html"> Pro Kabaddi League</a></li>
+            <li><a href="inten-matches.html">International Matches</a></li>
+            </ul>
+        </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Teams<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkl-Teams.html">PKL Teams</a></li>
+          <li><a href="inten-teams.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Video Hub<span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="KabaddiAuction.html">Player Auction</a></li>
+          <li><a href="highlights.html">Match Highlights</a></li>
+          <li><a href="live.html">Live Video</a></li>
+          <li><a href="rules.html">Kabaddi Rules Videos </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Standings <span class="arrow">▼</span></a>
+        <ul class="dropdown-content">
+          <li><a href="pkltable.html">PKL Table</a></li>
+          <li><a href="international.html">International Teams</a></li>
+        </ul>
+      </li>
+
+      <li><a href="updates.html">Latest Updates</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </ul>
+</div>
+    
+    <div class="container1">
+        <header class="referee-header">
+            <h1>THE COMMAND OF IMPARTIALITY</h1>
+            <h2>MEET THE KABADDIXPRESS OFFICIATING PANEL</h2>
+            <p>Fairness, precision, and mastery of the rulebook define our command structure for every match.</p>
+        </header>
+
+        <section class="referees-list">
+            
+            <div class="referee-card veteran-model" id="ref-veteran">
+                <div class="referee-photo-area">
+                    </div>
+                <div class="referee-details">
+                    <h3>Drishti Pawan Sharma</h3>
+                    <p class="role">Review Umpire & Technology Liaison</p>
+                    <p class="quote">
+                        "The integrity of the mat rests on unyielding impartiality. We uphold the spirit of Kabaddi above all."
+                    </p>
+                    <div class="focus-area">
+                        <h4>Core Focus</h4>
+                        <ul>
+                            <li>Expert in Defensive Foul Assessment (20+ years)</li>
+                            <li>Strict interpretation of traditional rule structures</li>
+                            <li>Mentorship and standardizing league referee training</li>
+                        </ul>
+                    </div>
+                    <button class="view-profile-btn">View Full Bio & Vision</button>
+                </div>
+            </div>
+
+            <div class="referee-card tech-model" id="ref-tech">
+                <div class="referee-photo-area">
+                    </div>
+                <div class="referee-details">
+                    <h3>Mr. E. Prasad Rao</h3>
+                    <p class="role"> Cheif Review  & Technology Liaison</p>
+                    <p class="quote">
+                        "Technology removes doubt, allowing the game's brilliance to shine through. Precision is paramount."
+                    </p>
+                    <div class="focus-area">
+                        <h4>Core Focus</h4>
+                        <ul>
+                            <li>Expert in Hawk-Eye and Slow-Motion replay systems</li>
+                            <li>Minute line-crossing and boundary violation ruling</li>
+                            <li>Fastest and most accurate decision-making under review pressure</li>
+                        </ul>
+                    </div>
+                    <button class="view-profile-btn">View Full Bio & Vision</button>
+                </div>
+            </div>
+
+            <div class="referee-card international-model" id="ref-international">
+                <div class="referee-photo-area">
+                    </div>
+                <div class="referee-details">
+                    <h3>Jitesh Shirwadkar</h3>
+                    <p class="role">Lead International Umpire</p>
+                    <p class="quote">
+                        "A true umpire speaks the universal language of the rule book, understood across all borders and styles."
+                    </p>
+                    <div class="focus-area">
+                        <h4>Core Focus</h4>
+                        <ul>
+                            <li>Consistency across global Kabaddi events (Asian Games, etc.)</li>
+                            <li>Managing Super Tackle/Super Raid pressure scenarios</li>
+                            <li>Expert in multi-point raid determination</li>
+                        </ul>
+                    </div>
+                    <button class="view-profile-btn">View Full Bio & Vision</button>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileButtons = document.querySelectorAll('.view-profile-btn');
+
+            profileButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = button.closest('.referee-card');
+                    const refereeName = card.querySelector('h3').textContent;
+                    alert(`Loading full bio and vision for ${refereeName}.\n\n(In a live site, this would navigate to a detailed profile page.)`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
